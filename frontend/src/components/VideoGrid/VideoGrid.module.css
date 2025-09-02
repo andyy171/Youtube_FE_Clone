@@ -1,0 +1,89 @@
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .videoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
+/* Tablet landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .videoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .videoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+    padding: 32px;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+  .videoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 32px;
+    padding: 40px;
+  }
+}
+
+/* Loading state */
+.videoGrid.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Empty state */
+.videoGrid:empty::after {
+  content: "No videos found";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / -1;
+  height: 200px;
+  color: #666;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Animation for grid items */
+.videoGrid > * {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

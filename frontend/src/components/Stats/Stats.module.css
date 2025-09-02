@@ -1,0 +1,130 @@
+.stats {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  padding: 32px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+.stats h2 {
+  margin-bottom: 24px;
+  color: var(--accent-color);
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.statItem {
+  padding: 20px;
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.statItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+}
+
+.statItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.1);
+}
+
+.statNumber {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  display: block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.statLabel {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    padding: 24px 16px;
+    margin-bottom: 30px;
+  }
+  
+  .stats h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .statItem {
+    padding: 16px 12px;
+  }
+  
+  .statNumber {
+    font-size: 24px;
+  }
+  
+  .statLabel {
+    font-size: 12px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animation for stats update */
+.statNumber {
+  transition: all 0.3s ease;
+}
+
+.statItem:hover .statNumber {
+  color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+/* Dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
